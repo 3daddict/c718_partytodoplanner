@@ -5,13 +5,13 @@ export default props => (
     <div>
         <ul className="nav-menu">
             <li>
-                <Link exact to="/" className="nav-link">Home</Link>
+                <Link exact to="/" className="btn-blue nav-link">Home</Link>
             </li>
             <li>
-                <Link to="/list" className="nav-link">List Page</Link>
+                <Link to="/list" className="btn-blue nav-link">List Page</Link>
             </li>
             <li>
-                <Link to="/dashboard" className="nav-link">User Dash</Link>
+                <Link to="/dashboard" className="btn-blue nav-link">User Dash</Link>
             </li>
         </ul>
     </div>

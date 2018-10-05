@@ -1,111 +1,111 @@
 import React from 'react';
-import './list-owner.css';
+import '../assets/css/list-owner.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default props => ( 
     <div>
- <div class="container">
+ <div className="list-container">
         {/*Top Nav*/}
-        <div class="nav">
-            <i class="fas fa-chevron-left"></i>
-            <i class="fas fa-link"></i>
+        <div className="list-nav">
+            <FontAwesomeIcon icon="chevron-left" />
+            <FontAwesomeIcon icon="link" />
         </div>
         
         {/* User Avatar */}
-        <i class="fas fa-user"></i>
+        <FontAwesomeIcon icon="user" />
 
         {/* <!-- Main Content --> */}
-        <div class="listContent">
+        <div className="listContent">
             {/* <!-- List name, details, and filter button --> */}
-            <div class="top">
+            <div className="list-top">
                 <br/>
-                <h1 class="list-name">Aunt Sue's Party</h1>
-                <h4 class="details">Saturday April 1st</h4>
+                <h3 className="list-name">Aunt Sue's Party</h3>
+                <h5 className="details">Saturday April 1st</h5>
             </div>
             {/* <!-- Items --> */}
-            <div class="items">
-                <div class="item">
-                    <div class="left">
-                        <i class="fas fa-sort"></i>
+            <div className="list-items">
+                <div className="list-item">
+                    <div className="list-left">
+                        <FontAwesomeIcon icon="sort" />
                         <label>Chips</label>
                     </div>
-                    <div class="right">
-                        <i class="fas fa-pen"></i>
-                        <i class="fas fa-trash-alt"></i>
+                    <div className="list-right">
+                        <FontAwesomeIcon icon="pen" />
+                        <FontAwesomeIcon icon="trash-alt" />
                     </div>
                 </div>
-                <div class="item">
-                    <div class="left">
-                        <i class="fas fa-sort"></i>
+                <div className="list-item">
+                    <div className="left">
+                        <FontAwesomeIcon icon="sort" />
                         <label>Beer</label>
                     </div>
-                    <div class="right">
-                        <i class="fas fa-pen"></i>
-                        <i class="fas fa-trash-alt"></i>
+                    <div className="list-right">
+                        <FontAwesomeIcon icon="pen" />
+                        <FontAwesomeIcon icon="trash-alt" />
                     </div>
                 </div>
-                <div class="item">
-                    <div class="left">
-                        <i class="fas fa-sort"></i>
+                <div className="list-item">
+                    <div className="list-left">
+                        {/* <i className="fas fa-sort"></i> */}
+                        <FontAwesomeIcon icon="sort" />
                         <label>Plastic forks</label>
                     </div>
-                    <div class="right">
-                        <i class="fas fa-pen"></i>
-                        <i class="fas fa-trash-alt"></i>
+                    <div className="list-right">
+                        <FontAwesomeIcon icon="pen" />
+                        <FontAwesomeIcon icon="trash-alt" />
                     </div>
                 </div>
-                <div class="item">
-                    <div class="left">
-                        <i class="fas fa-sort"></i>
+                <div className="list-item">
+                    <div className="list-left">
+                        <FontAwesomeIcon icon="sort" />
                         <label>Cups</label>
                     </div>
-                    <div class="right">
-                        <i class="fas fa-pen"></i>
-                        <i class="fas fa-trash-alt"></i>
+                    <div className="list-right">
+                        <FontAwesomeIcon icon="pen" />
+                        <FontAwesomeIcon icon="trash-alt" />
                     </div>
                 </div>
-                <div class="item">
-                    <div class="left">
-                        <i class="fas fa-sort"></i>
+                <div className="list-item">
+                    <div className="list-left">
+                        <FontAwesomeIcon icon="sort" />
                         <label>Soda</label>
                     </div>
-                    <div class="right">
-                        <i class="fas fa-pen"></i>
-                        <i class="fas fa-trash-alt"></i>
+                    <div className="list-right">
+                        <FontAwesomeIcon icon="pen" />
+                        <FontAwesomeIcon icon="trash-alt" />
                     </div>
                 </div>
-                <br/>>
+                <br/>
                 {/* <!-- Add List Button --> */}
-                <div class="item add modal-trigger">
-                    <i class="fas fa-plus-circle"></i>
-                    <label class="add">Add Item</label>
+                <div className="list-item add modal-trigger">
+                    <FontAwesomeIcon className="list-plus-circle" icon="plus-circle" />
+                    <label className="add">Add Item</label>
                 </div>
             </div>
         </div>
         {/* <!-- Footer --> */}
-        <div class="footer">
-            {/* <!-- <i class="fas fa-dollar-sign"></i> --> */}
-            <i class="fas fa-comments"></i>
+        <div className="list-footer">
+            <FontAwesomeIcon icon="comments" />
         </div>
 
         {/* <!--MODAL--> */}
-        <div class="flex align-center align-vert modal modal-align container">
-            <div class="modal-container">
-                <header class="modal-header">
+        {/* <div className="flex align-center align-vert modal modal-align container">
+            <div className="modal-container">
+                <header className="modal-header">
                     <h1>Add Item</h1>
-                    <a class="modalClose modalCloseX" aria-hidden="true">&#x2715;</a>
+                    <a className="modalClose modalCloseX" aria-hidden="true">&#x2715;</a>
                 </header>
-                <div class="main">
-                    <input class="add-input" type="text" name="sauce"/>
+                <div className="main">
+                    <input className="add-input" type="text" name="sauce"/>
                 </div>
-                <footer class="modal-footer">
-                    <div class="modal-buttons">
-                        <button class="modalClose modalCloseBtn">Cancel</button>
-                        <button class="modalClose modalCloseBtn">OK</button>
+                <footer className="modal-footer">
+                    <div className="modal-buttons">
+                        <button className="modalClose modalCloseBtn">Cancel</button>
+                        <button className="modalClose modalCloseBtn">OK</button>
                     </div>
                 </footer>
             </div>
-        </div>
+        </div> */}
     </div>
     </div>
 )

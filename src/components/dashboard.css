@@ -2,7 +2,6 @@ body{
     height: 100vh;
     font-family: 'Open Sans', sans-serif;
     font-size: 20px;
-    background: lightblue;
 }
 .container{
     height: 100%;
@@ -85,9 +84,9 @@ justify-content: space-between;
 i{
     cursor: pointer;
 }
-.fa-plus-circle{
+/* .fa-plus-circle{
     font-size: 2em;
     position: absolute;
     bottom: 0;
     align-self: center;
-}
+} */

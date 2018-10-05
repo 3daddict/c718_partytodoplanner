@@ -17,13 +17,17 @@ body {
   header,
   footer {
     background: #007bff;
-    height: 10vh;
+    height: 5vh;
     text-align: center;
   }
   header,
   footer,
   nav {
-    padding: 1em;
+    padding: 0.5em;
+  }
+  footer{
+    display: relative;
+    bottom: 0;
   }
   .side-nav {
     display: none;
@@ -40,6 +44,7 @@ body {
   .content {
     display: flex;
     flex-direction: row;
+    height: 90vh;
   }
   .content > section {
     flex: 4;
@@ -133,8 +138,12 @@ h6 {
 * Links
 *************************/
 
+.nav-menu>li{
+  display: inline-block;
+  margin: 0 0.5em;
+}
 a {
-  color: #1976d2;
+  color: black;
   text-decoration: none;
   cursor: pointer;
 }
