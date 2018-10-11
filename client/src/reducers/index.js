@@ -3,12 +3,14 @@ import { reducer as formReducer  } from 'redux-form';
 import listReducer from './list_reducer';
 import userReducer from './user_reducer';
 import chatReducer from './chat_reducer';
+import checkboxReducer from './checkbox_reducer';
 
 const rootReducer = combineReducers({
     list: listReducer,
     user: userReducer,
     chat: chatReducer,
-    form: formReducer//you need this to be able to type in to redux-form
+    form: formReducer,//you need this to be able to type in to redux-form
+    checkbox: checkboxReducer
 });
 
 export default rootReducer;

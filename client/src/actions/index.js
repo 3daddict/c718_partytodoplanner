@@ -34,3 +34,15 @@ export function createListData(userForm){
         })
     }
 }
+
+function checkCheckbox(){
+    return {
+        type: types.CHECK
+    }
+}
+
+function uncheckCheckbox(){
+    return {
+        type: types.UNCHECK
+    }
+}

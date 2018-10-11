@@ -1,5 +1,7 @@
 export default {
     LOGIN: 'login',
+    CHECK: 'check',
+    UNCHECK: 'uncheck',
     CHANGE_TEMPLATE: 'change_template',
     MAKE_NEW_LIST: 'make_new_list',
     ADD_LIST_ITEM: 'add_list_item',
