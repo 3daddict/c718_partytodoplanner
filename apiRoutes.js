@@ -109,7 +109,8 @@ const paths = ( server, mySQL, connection ) => {
 		const itemUserVerificationInserts = ['items', 'ID', ID];
 		const itemUserVerificationSQL = mySQL.format( itemUserVerificationQuery, itemUserVerificationInserts );
 
-		connection.query( itemUserVerificationSQL, ( error, results, fields ) => {
+		const variablename = connection.query( itemUserVerificationSQL, ( error, results, fields ) => {
+			console.log(variablename.sql);	//prints out the query
 			if( error ){		//the itemID that was trying to be deleted was incorrect
 				console.log( '/api/updateitem error:', error );
 				const dataToReturn = {
@@ -260,7 +261,7 @@ const paths = ( server, mySQL, connection ) => {
 		const listUpdateQuery = 'UPDATE lists SET ??=?, ??=?, ??=?, ??=?, ??=?, ??=? WHERE ?? = ?';
 		const listUpdateInserts = [ 'name', name, 'description',  description, 'ownerID', ownerID, 'url', url, 'securityStatus', securityStatus, 'eventTime', eventTime, 'ID', ID ];
 		const listUpdateSQL = mySQL.format( listUpdateQuery, listUpdateInserts );
-
+		try{
 		connection.query( listUpdateSQL, ( error, results, fields ) => {
 			if( error ){		//could not find a list by the ID given
 				console.log( '/api/updatelist error:', error );
@@ -268,6 +269,7 @@ const paths = ( server, mySQL, connection ) => {
 					success: false,
 					data: "Error: list by that ID does not exist"
 				}
+				throw 'the query was unsuccessful';
 				response.json( dataToReturn );
 				return;
 			}
@@ -280,8 +282,12 @@ const paths = ( server, mySQL, connection ) => {
 			};
 			response.json( dataToReturn );
 		});
+	}
+	catch(error){
+		
+	}
 	});
-
+	
 	/**
 	 * requires ID of the list to be deleted
 	 * list not truely deleted, but the status is set to inactive
