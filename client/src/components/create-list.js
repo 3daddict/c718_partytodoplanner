@@ -8,7 +8,7 @@ import { createListData, authenticate } from '../actions';
 import Header from './header';
 import Footer from './footer';
 import DatePicker from './date-picker';
-import { userInfo } from 'os';
+// import { userInfo } from 'os';
 
 // import '../../node_modules/flatpickr/dist/themes/airbnb.css'
 // import Flatpickr from 'react-flatpickr'
@@ -119,11 +119,14 @@ class CreateList extends Component{
 }
 
 function validate(values){
-    const { eventName, eventDateInput } = values;
+    const { eventName, eventDateInput, eventDescription } = values;
     const errors = {};
 
     if(!eventName){
         errors.eventName = "Please enter a name for your event";
+    }
+    if(!eventDescription){
+        errors.eventDescription = "Please enter a description for your event";
     }
     if(!eventDateInput){
         errors.eventDateInput = 'Please select the date of your event';
