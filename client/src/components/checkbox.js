@@ -22,21 +22,26 @@ class Checkbox extends Component {
             random: true
         }
         this.toggleCheck = this.toggleCheck.bind(this);
+
     }
 
 
-    open = () => this.setState({isOpen: true});
-    close = () => this.setState({isOpen: false});
+    // open = () => this.setState({isOpen: true});
+    close = (e) => {
+        e.stopPropagation()
+        this.setState({isOpen: false});
+    }
 
 
     toggleCheck(){
         const { assignedUserID, userInfo } = this.props;
         const {ID: userID} = userInfo;
         if(!userID){//if user is not logged in
+            debugger;
             this.setState({
                 isLogOn: false,
+                isOpen: true
             })
-            this.open();
             return;
         }
         if(userID!==assignedUserID && assignedUserID>0){//if user is not the one who checked the box
@@ -79,7 +84,7 @@ class Checkbox extends Component {
             <div className="list_item">
                 <div className="shared-left">
                     <label className="label-container">
-                        <input type="checkbox" name={name} value={name} checked={isChecked ? 'checked' : false}  onChange={this.toggleCheck} />
+                        <input type="checkbox" name={name} value={name} checked={isChecked ? 'checked' : false}  onClick={this.toggleCheck} />
                         <span className="checkmark"></span>
                         <label style={isChecked ? crossedOutTextStyle : this.state.style } >{this.props.itemName}</label>
                         <label className="checkbox-login"><SignInModal isOpen={this.state.isOpen} close={this.close}/></label>

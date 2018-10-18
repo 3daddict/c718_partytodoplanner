@@ -75,8 +75,8 @@ class CreateList extends Component{
     //     );
     // }
 
-    open = () => this.setState({isOpen: true});
-    close = () => this.setState({isOpen: false});
+    open = () => this.setState({modalStatus: true});
+    close = () => this.setState({modalStatus: false});
 
     getDate( dateString ){
         this.setState({
@@ -90,7 +90,6 @@ class CreateList extends Component{
             localStorage.setItem('eventName', values.eventName);
             localStorage.setItem('eventDescription', values.eventDescription);
             localStorage.setItem('eventTime', values.eventTime[0]);
-
             this.setState({
                 modalStatus: true
             });
