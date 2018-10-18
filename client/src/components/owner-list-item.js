@@ -3,6 +3,7 @@ import { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { deleteItem } from '../actions';
 import { getListData } from '../actions/index';
+import { Link } from 'react-router-dom';
 
 class ListItem extends Component {
 
@@ -21,6 +22,7 @@ class ListItem extends Component {
     }
 
     render() {
+        console.log('List Item this.props :', this.props);
         const {itemName} = this.props;
         return (
                 <div className="list-item">
@@ -29,7 +31,9 @@ class ListItem extends Component {
                         <label className="item-name">{itemName}</label>
                     </div>
                     <div className="list-right">
-                        {/* <div onClick={this.updateSingleItem} className="edit"><i className="fas fa-pen"></i></div> */}
+                        <Link to={`/edit-item/${this.props.ID}`}>
+                            <div className="edit"><i className="fas fa-pen"></i></div>
+                        </Link>
                         <div onClick={this.deleteSingleItem} className="delete"><i className="fas fa-trash-alt"></i></div>                     
                     </div>
                 </div>

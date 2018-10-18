@@ -47,6 +47,7 @@ class OwnerList extends Component{
 
     renderInput = (props) => {
         const { input } = props;
+        console.log('input :', input);
         return (
             <div className="row">
                 <input className="add-input-field" {...input} type="text" autoComplete="off" placeholder="Eg. plastic plates" />
