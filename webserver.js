@@ -3,6 +3,8 @@
 const express = require( 'express' );
 const mySQL = require( 'mysql' );
 const passport = require( 'passport' );
+const Websocket = require( 'ws' );
+const http = require( 'http' );
 const passportSetup = require( './config/passportSetup.js' );
 const mysqlCredentials = require( './config/mySQLCredentials.js' );
 const cookieSession = require( 'cookie-session' );
@@ -12,9 +14,18 @@ const listRoutes = require( './list_api_routes.js');
 const itemRoutes = require( './item_api_routes.js')
 const authRoutes = require( './authRoutes.js' );
 const keys = require( './config/keys.js' );
+const websocketFunctions = require( './websocket.js' );
 
 const server = express();
 const PORT = 3050;
+
+//websocket server setup
+const httpServer = http.createServer( server );
+const wss = new Websocket.Server( {
+	httpServer,
+	clientTracking: false 
+	} );
+const openConnections = {};
 
 //MySQL connection being made
 const connection = mySQL.createConnection( mysqlCredentials );
@@ -25,7 +36,7 @@ connection.connect( error => {
 });
 
 
-//middleware for the server
+//middleware for the express server
 server.use( cookieSession({
 	maxAge: 24 * 60 * 60 * 1000,	//one day in milliseconds
 	keys: keys.cookieKey
@@ -48,6 +59,7 @@ listRoutes( server, mySQL, connection );
 itemRoutes( server, mySQL, connection );
 authRoutes( server, mySQL, connection, passport)
 passportSetup( server, mySQL, connection, passport );
+websocketFunctions( wss, openConnections, mySQL, connection );
 /**
 	 * needed for the deployed site to kickstart react routing.
 	 * any request that doesnt first hit our site fails because it is going straight to the server, which then will get redirected back the the main html
