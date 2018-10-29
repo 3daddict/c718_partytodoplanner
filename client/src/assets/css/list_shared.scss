@@ -12,6 +12,10 @@
     justify-content: center;
 }
 
+.list-edit{
+    font-size: 1.25rem;
+}
+
 .list-nav{
     display: flex;
     justify-content: space-between;
@@ -98,6 +102,12 @@
 
 .checkbox-login{
     margin: 0 0.5em;
+}
+
+.share{
+    position: relative;
+    right: 30%;
+    font-size: 1rem;
 }
 
 /*************************

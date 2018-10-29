@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { sendCheckboxInfo, deleteItem, getListData, updateListData } from '../actions';
 import blankImage from '../assets/images/nothing.png';
 import SignInModal from './sign-in-modal';
+import axios from 'axios';
 
 const crossedOutTextStyle = {
     textDecoration: 'line-through'
@@ -44,16 +45,23 @@ class Checkbox extends Component {
             return;
         }
         if(userID===assignedUserID){//if the user is the one who checked the box first
-            this.setState({//allow checkbox to be toggled
-                isChecked: !this.state.isChecked
-            })
             this.sendInfoToServer();
             return;
         }
-        this.setState({
-            isChecked: !this.state.isChecked,
-        })
+        // this.setState({
+        //     isChecked: !this.state.isChecked,
+        // })
         this.sendInfoToServer();
+    }
+
+    updateCheckbox = async (info) => {
+        debugger;
+        const resp = await axios.patch('/api/updateitem', info);
+        console.log('Update Checkbox resp :', resp);
+        this.props.getListData(this.props.url);
+        this.setState({//allow checkbox to be toggled
+            isChecked: !this.state.isChecked
+        })
     }
 
     sendInfoToServer = () => {
@@ -65,9 +73,9 @@ class Checkbox extends Component {
             assignedUserID = userID;
         }
         const checkboxObject = {ID, name, listID, assignedUserID};
-        this.props.sendCheckboxInfo(checkboxObject);
-        this.props.getListData(this.props.url);
-        this.props.updateListData(listID);
+        // this.props.sendCheckboxInfo(checkboxObject);
+        this.updateCheckbox(checkboxObject);
+        this.props.updateListData(listID);//this adds the list to the userdash if they check an item of another person's list
     }
 
     addDefaultSrc(ev){
@@ -76,7 +84,7 @@ class Checkbox extends Component {
 
     render(){
         // const { ID, name, listID, assignedUserID } = request.body;
-        // console.log('checkbox props :', this.props);
+        console.log('checkbox props :', this.props);
         const {name} = this.props;
         if(this.props.avatar){
             var {avatar} = this.props;
@@ -111,7 +119,6 @@ function mapStateToProps(state){
         userInfo: state.user.userInfo,
     }
 }
-
 
 export default connect(mapStateToProps,{
     sendCheckboxInfo, deleteItem, getListData, updateListData

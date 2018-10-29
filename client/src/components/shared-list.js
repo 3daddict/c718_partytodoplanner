@@ -6,6 +6,7 @@ import { getListData } from '../actions';
 import { Fragment } from 'react';
 import Header from './header';
 import Footer from './footer';
+import SettingsButton from './buttons/settings_button';
 
 import Checkbox from './checkbox';
 import AddListItemButton from './buttons/add_list_item_button';
@@ -34,7 +35,6 @@ class SharedList extends Component{
     }
 
     copyToClipboard=()=>{
-        debugger;
         var copyText = document.getElementById("select-this");
         copyText.select();
         document.execCommand("copy");
@@ -46,8 +46,11 @@ class SharedList extends Component{
 
     render(){
         const {items,list, userInfo} = this.props;
+        if(list[0]){
+            var {ownerID} = list[0];
+        }
         if(userInfo){
-            var { avatar } = userInfo;
+            var { avatar, ID: userID } = userInfo;
         }
         console.log('Shared list this.props :', this.props);
         console.log('this.url :', this.url);
@@ -66,11 +69,20 @@ class SharedList extends Component{
                                 <img src={filter} alt="filter"/>   All
                             </div> */}
                             <div className="list-top">
+                                {ownerID === userID ? 
+                                        <Link to={`/list/${this.url}`}>
+                                            <div className="list-edit">
+                                                {/* <i className="fas fa-pencil-alt btn-green settings-button"></i> */}
+                                                <i className="fas fa-pen"></i> Edit List
+                                            </div>
+                                        </Link>
+                                : null}
                                 <h4 className="shared-list-title">{list.length>0 ? list[0].name : 'List Not Found'}</h4>
                                 <div className="shared-date">{list.length>0 ? list[0].eventTime.slice(0, 19).replace('T', ' ') : '404 Error'}</div>
                                 <h6 className="shared-details">{list.length>0 ? list[0].description : 'Please try your list link again or contact the list creator'}</h6>
+                                <div className="share">Share With Others</div>
                                 <div className="wrapper">{ (list.length > 0)
-                                    ? <input className="copy-link-input-field" id="select-this" value={this.link}/>
+                                    ?  <input className="copy-link-input-field" id="select-this" value={this.link}/>
                                     : <button className="btn btn-blue"><i className="fas fa-home"></i> Home</button> }
 
                                     { (list.length > 0)
